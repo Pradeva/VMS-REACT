@@ -24,6 +24,27 @@
   color: white;
 }
 
+.Video-element {
+  width:  900px;
+  height: 506px;
+  border: 2px dotted white; /* You can adjust the border width and color as needed */
+}
+
+.Button-element {
+  margin-top: 10px; /* menambahkan margin di atas tombol */
+  padding: 10px 20px; /* menambahkan padding ke tombol */
+  font-size: 16px; /* menyesuaikan ukuran font */
+  background-color: #fff; /* menyesuaikan warna latar belakang */
+  color: #000; /* menyesuaikan warna teks */
+  border: none; /* menghapus border */
+  border-radius: 5px; /* menambahkan sudut melengkung */
+  cursor: pointer; /* mengubah kursor saat diarahkan ke tombol */
+}
+
+.Button-element:hover {
+  background-color: wheat; /* menyesuaikan warna latar belakang saat dihover */
+}
+
 .App-link {
   color: #61dafb;
 }
