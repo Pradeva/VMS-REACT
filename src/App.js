@@ -1,15 +1,16 @@
 import React from 'react';
 import VideoPlayer from './VideoPlayer';
 
-const App = () => {
-    const videoUrl = 'http://localhost:3001/api/video/sample.mp4'; // URL dari server A
+function App() {
+  // Tentukan nama file video saat ini (misalnya, video pertama)
+  const currentVideo = 'sample2.mp4'; // Ubah ini sesuai nama video di folder backend
 
-    return (
-        <div>
-            <h1>Video Player</h1>
-            <VideoPlayer videoUrl={videoUrl} />
-        </div>
-    );
-};
+  return (
+    <div className="App">
+      <h1>React Video Player</h1>
+      <VideoPlayer currentVideo={currentVideo} />
+    </div>
+  );
+}
 
 export default App;
