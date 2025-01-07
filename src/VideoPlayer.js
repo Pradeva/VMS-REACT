@@ -9,37 +9,37 @@ const VideoPlayer = ({ currentVideo }) => {
   useEffect(() => {
     // Fetch video list from the backend
     axios
-      .get(`http://localhost:3001/api/videos/${currentVideo}`) // Sesuaikan IP/port backend
+      .get(`http://10.11.1.53:3001/api/videos/${currentVideo}.mp4`) // Sesuaikan IP/port backend
       .then((response) => {
         const data = response.data;
         console.log('Video Data:', data);
 
-        // Update video list state
+        // Update video list state with the correct response
         setVideoList(data);
 
-        // Mulai dengan video sebelumnya (not current)
-        setCurrentPlaying(data.previous); // Mulai dengan video sebelumnya
+        // Start with the current video, not previous
+        setCurrentPlaying(data.previous); 
       })
       .catch((error) => {
         console.error('Error fetching video list:', error.message);
       });
-  }, [currentVideo]); // Pastikan fetch ulang jika currentVideo berubah
+  }, [currentVideo]); // Make sure to fetch new data if currentVideo changes
 
   // Memastikan video berganti setelah selesai
   useEffect(() => {
     if (currentPlaying) {
       videoRef.current.load(); // Force reload video jika URL berubah
     }
-  }, [currentPlaying]); // Akan dipanggil setiap kali currentPlaying berubah
+  }, [currentPlaying]); // Will trigger every time currentPlaying changes
 
   const handleVideoEnd = () => {
     console.log('Current Playing:', currentPlaying);
     console.log('Video List:', videoList);
 
     if (currentPlaying === videoList.previous) {
-      setCurrentPlaying(videoList.current); // Setelah video sebelumnya selesai, lanjut ke video saat ini
+      setCurrentPlaying(videoList.current); // After previous video finishes, move to current
     } else if (currentPlaying === videoList.current) {
-      setCurrentPlaying(videoList.next); // Setelah video saat ini selesai, lanjut ke video berikutnya
+      setCurrentPlaying(videoList.next); // After current video finishes, move to next
     }
   };
 
